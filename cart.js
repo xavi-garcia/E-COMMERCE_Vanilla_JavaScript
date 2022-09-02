@@ -34,35 +34,25 @@ function updateCart (){
         div.classList.add('productInCart')
         div.innerHTML = `<p>${product.name}</p>
                         <p>Precio: ${product.price}</p> 
-                        <p id="quantity${product.id}"> Quantity: ${product.quantity}</p>
-                        <button class="btn btn-danger btn-sm" id="delete${product.id}">x</button>
+                        <p id="quantity${product.id}"> Quantity: ${product.quantity}</p><button>+</button>-<button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteProd(${product.id})">x</button>
                         `
        cartContainer.appendChild(div);
-       
-    
-       let buttonDelete = document.getElementById(`delete${product.id}`);
-       buttonDelete.addEventListener('click', (e)=>{
-        deleteProduct(e)
-       })
     
        counter.innerText = shoppingCart.reduce((accum, item)=> accum + item.quantity , 0)
    
     })
+
     localStorage.setItem("products",JSON.stringify(shoppingCart));
-    // updateTotal()
-}
-
-function deleteProduct(e){
-    let btnClicked = e.target;
-    btnClicked.parentElement.remove();
-    
+    totalPrice.innerText = shoppingCart.reduce((accum, item) => accum + item.quantity * item.price , 0)
 }
 
 
-function updateTotal(){
-    totalPrice.innerText = total = shoppingCart.reduce((acc, prod) => acc + prod.quantity * prod.price, 0);
+
+function deleteProd(prodId){
+    let prod = shoppingCart.filter((prod) => prod.id === prodId);
+    let index = shoppingCart.indexOf(prod);
+    shoppingCart.splice(index, 1);
+    updateCart()
 }
 
-// function quantityItem (){
-//     return shoppingCart.reduce((accum, item)=> accum + item.quantity , 0)
-// };
