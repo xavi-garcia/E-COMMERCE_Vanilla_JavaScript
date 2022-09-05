@@ -54,7 +54,7 @@ const mostrarProductos = async (products) =>{
                             <div class="card-body">
                                 <h5 class="card-title">${product.name}</h5>
                                 <p class="card-text">Price:$ ${product.price}</p>
-                                <p id="quantity" class="card-text">${product.quantity}</p>
+                               
                                 <button class="btn btn-primary" id="button${product.id}">Buy</button>
                             </div>
                         </div>`
