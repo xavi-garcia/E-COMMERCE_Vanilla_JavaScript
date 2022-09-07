@@ -61,10 +61,10 @@ const mostrarProductos = async (products) =>{
 
         productsContainer.appendChild(card);
         const button = document.getElementById(`button${product.id}`);
-        
+
         
         button.addEventListener('click', ()=>{
-            addToCart(product.id);
+            addToCart(`${product.id}`);
             alert(`Agregaste ${product.name}`);
         })
     })

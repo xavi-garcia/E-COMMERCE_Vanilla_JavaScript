@@ -28,7 +28,7 @@
                 <a class="nav-link" href="#">Figures</a>
               </li>
               <li class="nav-item">
-                <button class="nav-link text-body"  id="open" href="#">Cart<i class="fa-solid fa-cart-shopping"></i> <span id="counter">0</span></a>
+                <button class="nav-link text-body" id="open" href="#"><i class="fa-solid fa-cart-shopping">Cart</i> <span id="counter">0</span></a>
               </li>
             </ul>
           </div>
@@ -44,10 +44,28 @@
               <button id="close" class="btn btn-danger btn-sm">X</button>
                     <h3 id="cartTitle">Cart</h3>
                 <div id="cart-container"></div>
-                <p class="productPrice">Total: $<span id="totalPrice">0</span></p>
-                <button id="emptyCart" class="add">Empty Cart</button>
+                <!-- <p class="productPrice">Total: $<span id="totalPrice">0</span></p> -->
+                <!-- <button id="emptyCart" class="add">Empty Cart</button>
+                <button id="confirmPurchase">Confirm Purchase</button> -->
             </div>
         </div>
+
+        <!-- modal 2 -->
+        <div class="box">
+          <a href="#m2-o" class="link-1" id="m2-c">CART</a>
+          <p class="box__info"></p>
+
+          <div class="modal-container" id="m2-o" style="--m-background: hsla(0, 0%, 0%, .4);">
+            <div class="modal">
+              <h1 class="modal__title">Modal 2 Title</h1>
+              <p class="modal__text" id="productPrice">Total: $<span id="totalPrice">0</span></p>
+              <button class="modal__btn" id="emptyCart" class="add">Empty Cart &rarr;</button>
+              <button class="modal__btn" id="confirmPurchase">Confirm Purchase &rarr;</button>
+              <a href="#m2-c" class="link-2"></a>
+            </div>
+          </div>
+        </div>
+<!-- /modal 2 -->
     
     </main>
 
