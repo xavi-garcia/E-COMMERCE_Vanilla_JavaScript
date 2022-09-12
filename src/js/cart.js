@@ -2,8 +2,8 @@ const cartContainer = document.getElementById('cart-container');
 const counter = document.getElementById('counter');
 const totalPrice = document.getElementById('totalPrice');
 const buttonDeleteAll = document.getElementById('emptyCart');
+const buttonAlphabeticalOrder = document.getElementById('alphabeticalOrder')
 const shoppingCart = [];
-
 
 function addToCart(prodId){
     const inCart = shoppingCart.some((prod) => prod.id === prodId); // some is better than filter since it returns true or false
@@ -19,10 +19,10 @@ function addToCart(prodId){
         shoppingCart.push(product);
     }
     updateCart()
-}
+};
 
 function addFromCart(prodId){
-    const inCart = shoppingCart.some((prod) => prod.id === prodId); // some is better than filter since it returns true or false
+    const inCart = shoppingCart.some((prod) => prod.id === prodId); 
     if(inCart){
         let prod = shoppingCart.map(prod =>{
             if(prod.id === prodId){
@@ -31,7 +31,7 @@ function addFromCart(prodId){
         })
     }
     updateCart()
-}
+};
 
 function updateCart (){
     cartContainer.innerHTML = "";
@@ -39,10 +39,16 @@ function updateCart (){
     shoppingCart.forEach(product => {
     let div = document.createElement('div')
         div.classList.add('productInCart')
-        div.innerHTML = `<p>${product.name}</p>
-                        <p>Price: ${product.price}</p> 
-                        <button id="quantity${product.id}">+</button><p id="paragraphQuantity">${product.quantity}</p><button id="deleteQuantity${product.id}">-</button>
+        div.setAttribute(
+            'style',
+            'background-color: yellow; margin: 10px; padding: 20px;border: solid 10px; border-radius: 10px 40px 40px 10px',
+
+        )
+        div.innerHTML = `<p style="word-wrap: break-word; font-weight: bold;" >${product.name}</p>
+                        <p>$${product.price}</p> 
+                        <button class="btn btn-dark" id="quantity${product.id}">+</button><p id="paragraphQuantity">${product.quantity}</p><button class="btn btn-dark" id="deleteQuantity${product.id}">-</button>
                         <button class="btn btn-danger btn-sm" onclick="deleteProd(${product.id})">x</button>
+                        
                         `
        cartContainer.appendChild(div);
        counter.innerText = shoppingCart.reduce((accum, item)=> accum + item.quantity , 0);
@@ -69,7 +75,7 @@ function deleteProd(prodId){
     let index = shoppingCart.indexOf(prod);
     shoppingCart.splice(index, 1);
     updateCart()
-}
+};
 
 function deleteProdFromCart(prodId){
     const inCart = shoppingCart.some((prod) => prod.id === prodId); // some is better than filter since it returns true or false
@@ -81,14 +87,13 @@ function deleteProdFromCart(prodId){
         }})
     }
     updateCart()
-}
+};
 
 buttonDeleteAll.addEventListener('click', ()=>{
     deleteAll()
-})
+});
 
 function deleteAll(){
     shoppingCart.length = 0;
     updateCart()
-}
-
+};

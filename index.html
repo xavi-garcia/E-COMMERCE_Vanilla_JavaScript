@@ -5,75 +5,82 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>E-commerce</title>
+    <title>Haku's World Store</title>
     <link rel="stylesheet" href="/src/style/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-dark" id="nav-color">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">E-commerce</a>
+          <a class="navbar-brand" href="#"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0" >
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="#" id="nav-color">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Mangas</a>
+                <a class="nav-link" href="#" id="nav-color">About us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Figures</a>
+                <button class="nav-link text-body btn btn-warning btn-sm"  id="open" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-cart"></i><span id="counter">0</span>
               </li>
               <li class="nav-item">
-                <button class="nav-link text-body" id="open" href="#"><i class="fa-solid fa-cart-shopping">Cart</i> <span id="counter">0</span></a>
+                <input type="text"  class="form-control mr-sm-2"id="mySearch" onkeyup="filterProducts()" placeholder="Search.." title="Type in a category">
               </li>
             </ul>
           </div>
         </div>
-      </nav>
-    <div>
-        <h1>E-commerce</h1>
+    </nav>
+    <div class="banner-image">
+        <div class="banner-text">
+          <h2 class="title">
+            <span class="title-word title-word-1">Haku's</span>
+            <span class="title-word title-word-2">World</span>
+            <span class="title-word title-word-3">Store</span>
+          </h2>
+        </div>
     </div>
-    <main id="product-container">
-
-        <div class="modal-container" id="modal_container">
-            <div id="modalCart" class="modal-cart">
-              <button id="close" class="btn btn-danger btn-sm">X</button>
-                    <h3 id="cartTitle">Cart</h3>
-                <div id="cart-container"></div>
-                <!-- <p class="productPrice">Total: $<span id="totalPrice">0</span></p> -->
-                <!-- <button id="emptyCart" class="add">Empty Cart</button>
-                <button id="confirmPurchase">Confirm Purchase</button> -->
-            </div>
-        </div>
-
-        <!-- modal 2 -->
-        <div class="box">
-          <a href="#m2-o" class="link-1" id="m2-c">CART</a>
-          <p class="box__info"></p>
-
-          <div class="modal-container" id="m2-o" style="--m-background: hsla(0, 0%, 0%, .4);">
-            <div class="modal">
-              <h1 class="modal__title">Modal 2 Title</h1>
-              <p class="modal__text" id="productPrice">Total: $<span id="totalPrice">0</span></p>
-              <button class="modal__btn" id="emptyCart" class="add">Empty Cart &rarr;</button>
-              <button class="modal__btn" id="confirmPurchase">Confirm Purchase &rarr;</button>
-              <a href="#m2-c" class="link-2"></a>
-            </div>
+    <main>
+          <div id="product-container">
           </div>
-        </div>
-<!-- /modal 2 -->
-    
+          <ul id="myMenu">
+            <li><h5>Filter By</h5></li>
+            <li ><a id="alphabeticalOrder" onclick="filterByAlphabeticalOrder()" href="#">Alphabetical Order</a</li>
+            <li><a id="highToLow"onclick="filterByHighToLow()" href="#">High to Low</a></li>
+            <li><a id="lowToHigh"onclick="filterByLowToHigh()" href="#">Low to High</a></li>
+          </ul>
     </main>
+  
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modal">
+  <div class="modal-dialog modal-lg" id="modal">
+    <div class="modal-content" id="modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel" id="modalText">Cart</h5>
+        <button type="button" class="btn-close btn btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modal">
+        <div id="cart-container"></div>
+        <p class="productPrice" id="modalText">Total: $<span id="totalPrice" id="modalText">0</span></p>
+      </div>
+      <div class="modal-footer" id="modal">
+        <button id="emptyCart" class="btn btn-danger">Empty Cart</button>
+        <button id="confirmPurchase" class="btn btn-warning">Confirm Purchase</button>
+      </div>
+    </div>
+  </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
     crossorigin="anonymous"></script>
-    <script src="app.js"></script>
-    <script src="cart.js"></script>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script defer src="index.js"></script>
+    <script defer src="./src/js/cart.js"></script>
 </body>
 </html>

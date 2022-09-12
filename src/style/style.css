@@ -1,44 +1,57 @@
-/* Modal */
-.modal-container {
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed; 
-  background-color: transparent;
-  width: 100%;
+*{
+  text-decoration: none;
+  color: black;
+}
+body, html {
   height: 100vh;
-  visibility: hidden;
-  transition: opacity 0.3s ease;
-  border-radius: 10px ;
-  z-index: 100;
-} 
-
-/* hacer visible el modal  */
-.modal-active {
-  opacity: 1;
-  visibility: visible;
-  z-index: 5;
 }
 
-.modal-cart{
-  width: 50rem;
-  height: 30rem;
+#nav-color{
+  color:white;
+}
+
+.navbar-nav{
+  color:white;
+  font-size: large;
+}
+
+.banner-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://64.media.tumblr.com/24aa64139a433bf8970ecdea423d042f/c6379cd1da3f30c1-6e/s1280x1920/8aa8dbc8906a471ce114a4d9eebb86cfa05e10dd.jpg");
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.banner-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+}
+
+#modal {
+  background-color: black;
+  color: azure;
+}
+
+#cart-container {
   background-color: black;
 }
 
-#cartTitle{
-    margin: 5px 0;
-    padding:5px;
-    color: lightblue;
-    position: relative;
-    top: 10px; left: 360px
+#totalPrice {
+  color:azure
 }
 
-#close{
-    margin: 5px;
-    position: relative;
-    top: 10px; left:750px;
+#modalText {
+  color:azure
+}
+
+.modal-title {
+  color:azure
 }
 
 .productInCart {
@@ -52,16 +65,105 @@
   justify-content: space-between;
 }
 
-
 .card {
     margin:15px;
     padding:0,5px
 }
 
 #product-container {
-    display: grid;
-    margin: 90px auto;
+    float: right;
+    margin: auto;
+    padding: 20px;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
 } 
+
+#mySearch {
+  width: 100%;
+  font-size: 15px;
+  padding: 9px;
+  border: solid rgb(228, 228, 124);
+}
+
+.nav-item {
+  margin: 10px
+}
+
+#myMenu {
+  padding: 20px;
+  list-style-type: none;
+  float: left;
+  margin: auto;
+}
+
+
+#myMenu li a {
+  font-size: 18px;
+  padding: 12px;
+  text-decoration: none;
+  color: black;
+  display: block;
+ font-family: "monaco", monospace;
+}
+
+h5 {
+  padding: 12px;
+  text-decoration: none;
+  color: black;
+  display: block
+}
+
+#myMenu li a:hover {
+  background-color:#ede775;
+  border-radius: 2px;
+}
+
+.title-word {
+  animation: color-animation 4s linear infinite;
+}
+
+.title-word-1 {
+  --color-1: #d3df53;
+  --color-2: #eae161;
+  --color-3: #eaed34;
+}
+
+.title-word-2 {
+  --color-1: #d7e20a;
+  --color-2: #ede775;
+  --color-3: #f3ea8e;
+}
+
+.title-word-3 {
+  --color-1: #aaa82b;
+  --color-2: #f3e70c;
+  --color-3: #ecde40;
+}
+
+
+@keyframes color-animation {
+  0%    {color: var(--color-1)}
+  32%   {color: var(--color-1)}
+  33%   {color: var(--color-2)}
+  65%   {color: var(--color-2)}
+  66%   {color: var(--color-3)}
+  99%   {color: var(--color-3)}
+  100%  {color: var(--color-1)}
+}
+
+
+
+.container {
+  display: grid;
+  place-items: center;  
+  text-align: center;
+  height: 100vh
+}
+
+.title {
+  font-family: "monaco", monospace;
+  font-weight: 800;
+  font-size: 5.5vw;
+  text-transform: uppercase;
+}
