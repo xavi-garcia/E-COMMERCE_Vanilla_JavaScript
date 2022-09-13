@@ -46,15 +46,19 @@
           </h2>
         </div>
     </div>
-    <main>
-          <div id="product-container">
-          </div>
-          <ul id="myMenu">
-            <li><h5>Filter By</h5></li>
-            <li ><a id="alphabeticalOrder" onclick="filterByAlphabeticalOrder()" href="#">Alphabetical Order</a</li>
-            <li><a id="highToLow"onclick="filterByHighToLow()" href="#">High to Low</a></li>
-            <li><a id="lowToHigh"onclick="filterByLowToHigh()" href="#">Low to High</a></li>
-          </ul>
+    <main class="grid-container">
+      <div id="filter-container" class="item1">
+        <ul id="myMenu">
+          <li><h5>Filter By</h5></li>
+          <li ><a id="alphabeticalOrder" onclick="filterByAlphabeticalOrder()" href="#">Alphabetical Order</a</li>
+          <li><a id="highToLow"onclick="filterByHighToLow()" href="#">High to Low</a></li>
+          <li><a id="lowToHigh"onclick="filterByLowToHigh()" href="#">Low to High</a></li>
+          <li><a id="highToLow"onclick="filterByShonen()" href="#">Shonen</a></li>
+          <li><a id="lowToHigh"onclick="filterByShojo()" href="#">Shojo</a></li>
+            <li><a id="lowToHigh"onclick="filterByNovel()" href="#">Novel</a></li>
+        </ul>
+      </div>
+          <div id="product-container" class="item2"></div>
     </main>
   
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modal">

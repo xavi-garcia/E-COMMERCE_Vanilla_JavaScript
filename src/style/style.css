@@ -59,25 +59,54 @@ body, html {
   background-color: grey;
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
-  margin: 10px 0;
-  padding: 5px 10px;
+  margin: 5px 0;
+  padding: 5px 5px;
   display: flex;
   justify-content: space-between;
 }
 
 .card {
-    margin:15px;
+    margin:10px;
     padding:0,5px
 }
 
-#product-container {
+/* #product-container {
     float: right;
     margin: auto;
-    padding: 20px;
+    padding: 10x;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-} 
+}  */
+
+
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+}
+
+.item1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  float: left;
+}
+
+.item2 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  float: right;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+
+#myMenu {
+  padding: 20px;
+  list-style-type: none;
+  float: left;
+  margin: auto;
+}
 
 #mySearch {
   width: 100%;
@@ -89,14 +118,6 @@ body, html {
 .nav-item {
   margin: 10px
 }
-
-#myMenu {
-  padding: 20px;
-  list-style-type: none;
-  float: left;
-  margin: auto;
-}
-
 
 #myMenu li a {
   font-size: 18px;
@@ -115,7 +136,7 @@ h5 {
 }
 
 #myMenu li a:hover {
-  background-color:#ede775;
+  background-color:#f3ea8e;
   border-radius: 2px;
 }
 
