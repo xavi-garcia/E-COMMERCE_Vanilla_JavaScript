@@ -1,0 +1,19 @@
+[
+    {"id": 1, "name": "Naruto 13", "author":"Masashi Kishimoto", "price": 1100, "img": "src/img/naruto_13.jpg", "quantity": 1, "stock": 5, "category": "Shonen"},
+    {"id": 2, "name": "Naruto 25", "author":"Masashi Kishimoto", "price": 1100, "img": "src/img/naruto_25.jpg", "quantity": 1, "stock": 2, "category": "Shonen"},
+    {"id": 3, "name": "Naruto 27", "author":"Masashi Kishimoto", "price": 1100, "img": "src/img/naruto_27.jpg", "quantity": 1, "stock": 5, "category": "Shonen"},
+    {"id": 4, "name": "Naruto 33", "author":"Masashi Kishimoto", "price": 1100, "img": "src/img/naruto_33.jpg", "quantity": 1, "stock": 7, "category": "Shonen"},
+    {"id": 5, "name": "Naruto 34","author":"Masashi Kishimoto", "price": 1100, "img": "src/img/naruto_34.jpg", "quantity": 1, "stock": 5, "category": "Shonen"},
+    {"id": 6, "name": "Sakura 1", "author":"CLAMP", "price": 750, "img": "src/img/Sakura_01.jpg", "quantity": 1, "stock": 3, "category": "Shojo"},
+    {"id": 7, "name": "ChainSaw 1", "author":"Tatsuki Fujimoto", "price": 750, "img": "src/img/chainsaw_1.jpg", "quantity": 1, "stock": 5, "category": "Shonen"},
+    {"id": 8, "name": "ChainSaw 2", "author":"Tatsuki Fujimoto", "price": 750, "img": "src/img/chainsaw_2.jpg", "quantity": 1, "stock": 5, "category": "Shonen"},
+    {"id": 9, "name": "ChainSaw 5",  "author":"Tatsuki Fujimoto","price": 750, "img": "src/img/chainsaw_05.jpg", "quantity": 1, "stock": 5, "category": "Shonen"},
+    {"id": 10, "name": "Tomie I", "author":"Junji Ito", "price": 1500, "img": "src/img/tomie1.jpg", "quantity": 1, "stock": 5, "category": "Novel"},
+    {"id": 11, "name": "Tomie II","author":"Junji Ito", "price": 1500, "img": "src/img/tomie2.jpg", "quantity": 1, "stock": 5, "category": "Novel"},
+    {"id": 12, "name": "Uzumaki", "author":"Junji Ito", "price": 1500, "img": "src/img/uzumaki.jpg", "quantity": 1, "stock": 5, "category": "Novel"},
+    {"id": 13, "name": "Clover", "author":"CLAMP", "price": 2100, "img": "src/img/Clover_01.jpg", "quantity": 1, "stock": 5, "category": "Shojo"},
+    {"id": 14, "name": "Boruto 3", "author":"Masashi Kishimoto", "price": 1100, "img": "src/img/boruto_6.jpg", "quantity": 1, "stock": 5, "category": "Shonen"},
+    {"id": 15, "name": "Nana 6", "author":"Ai Yazawa", "price": 600, "img": "src/img/nana_06.jpg", "quantity": 1, "stock": 5, "category": "Shojo"},
+    {"id": 16, "name": "Nana 13", "author":"Ai Yazawa", "price": 600, "img": "src/img/nana_13.jpg", "quantity": 1, "stock": 5, "category": "Shojo"},
+    {"id": 17, "name": "Nana 21", "author":"Ai Yazawa", "price": 600, "img": "src/img/nana_21.jpg", "quantity": 1, "stock": 5, "category": "Shojo"}
+]

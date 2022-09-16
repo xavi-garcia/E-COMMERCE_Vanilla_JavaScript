@@ -2,30 +2,40 @@ const cartContainer = document.getElementById('cart-container');
 const counter = document.getElementById('counter');
 const totalPrice = document.getElementById('totalPrice');
 const buttonDeleteAll = document.getElementById('emptyCart');
-const buttonAlphabeticalOrder = document.getElementById('alphabeticalOrder')
+const confirmPurchaseButton = document.getElementById('confirmPurchase')
 const shoppingCart = [];
 
-function addToCart(prodId){
-    const inCart = shoppingCart.some((prod) => prod.id === prodId); // some is better than filter since it returns true or false
+const getProds = async () =>{
+    let response = await fetch('src/data/products.json');
+    let items = await response.json();
+    return items
+};
+
+const addToCart = async (prodId) => {
+    const inCart = shoppingCart.some((prod) => parseInt(prod.id) === parseInt(prodId));
     if(inCart){
         let prod = shoppingCart.map(prod =>{
-            if(prod.id === prodId){
+            if(parseInt(prod.id) === parseInt(prodId)){
                 prod.quantity++
             } 
         })  
     } else {
-        let product = products.find(product => product.id === prodId);
-        product.quantity = 1
-        shoppingCart.push(product);
+        let items = await getProds();
+        items.map(prod => {
+            if(parseInt(prod.id) === parseInt(prodId)){
+                prod.quantity = 1
+                shoppingCart.push(prod)
+            }
+        });
     }
     updateCart()
 };
 
 function addFromCart(prodId){
-    const inCart = shoppingCart.some((prod) => prod.id === prodId); 
+    const inCart = shoppingCart.some((prod) => parseInt(prod.id) === parseInt(prodId)); 
     if(inCart){
         let prod = shoppingCart.map(prod =>{
-            if(prod.id === prodId){
+            if(parseInt(prod.id) === parseInt(prodId)){
                 prod.quantity++
             } 
         })
@@ -66,24 +76,21 @@ function updateCart (){
 
     totalPrice.innerText = shoppingCart.reduce((accum, item) => accum + item.quantity * item.price , 0);
     localStorage.setItem("products",JSON.stringify(shoppingCart));
-    
-}
-
+};
 
 function deleteProd(prodId){
-    let prod = shoppingCart.filter((prod) => prod.id === prodId);
+    let prod = shoppingCart.find((prod) =>parseInt(prod.id) === parseInt(prodId));
     let index = shoppingCart.indexOf(prod);
     shoppingCart.splice(index, 1);
     updateCart()
 };
 
 function deleteProdFromCart(prodId){
-    const inCart = shoppingCart.some((prod) => prod.id === prodId); // some is better than filter since it returns true or false
+    const inCart = shoppingCart.some((prod) =>parseInt(prod.id) === parseInt(prodId));
     if(inCart){
         let prod = shoppingCart.map(prod =>{
-            if(prod.id === prodId && prod.quantity > 0){
+            if(parseInt(prod.id) === parseInt(prodId) && parseInt(prod.quantity) > 0){
                 prod.quantity--
-            
         }})
     }
     updateCart()
@@ -97,3 +104,72 @@ function deleteAll(){
     shoppingCart.length = 0;
     updateCart()
 };
+
+confirmPurchaseButton.addEventListener('click', (e) =>{
+    e.preventDefault
+    confirmPurchase()
+});
+
+function confirmPurchase(){ 
+    const modalBody = document.getElementById('modal-form');
+    modalBody.innerHTML = ""
+    const form = document.createElement('formCard');
+    form.innerHTML += `<form>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputName14" id="modalText">Name</label>
+                                        <input type="name" class="form-control" id="inputName14" placeholder="Name" required>
+                                    </div>                                    
+                                    <div class="form-group col-md-6">
+                                        <label for="inputlastName14" id="modalText">Last Name</label>
+                                        <input type="last-name" class="form-control" id="inputLastName14" placeholder="Last Name" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4" id="modalText">Email</label>
+                                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputAddress" id="modalText">Address</label>
+                                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputState" id="modalText">State</label>
+                                        <input id="inputState" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputZip" id="modalText">Zip</label>
+                                        <input type="text" class="form-control" id="inputZip" required>
+                                    </div>
+                                </div>
+                                <div id="finishPurchase">
+                                    <button class="btn btn-primary" onclick="finishPurchase()">Finish Purchase</button>
+                                </div>
+                            </form>`
+    modalBody.appendChild(form);
+};
+
+function finishPurchase(){
+    const inputName = document.getElementById('inputName14');
+    const inputLastName = document.getElementById('inputLastName14');
+    const inputEmail = document.getElementById('inputEmail4');
+    const inputAddress = document.getElementById('inputAddress')
+    const inputState = document.getElementById('inputState');
+    const inputZip = document.getElementById('inputZip');
+    const userName = document.getElementById('inputName14').value;
+
+    if(inputName.value === "" || inputLastName.value === ""|| inputEmail.value === ""||
+     inputAddress.value === "" || inputState.value === ""|| inputZip.value === "" ){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'You must complete all input fields',
+          })
+    } else {
+        const orderId = Math.floor(Math.random() * 7000)
+        Swal.fire(
+            `Thanks for the purchase ${userName}!`,
+            `Your order id is ${orderId}`,
+            'success'
+          )
+    }
+}

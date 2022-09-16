@@ -114,6 +114,11 @@ body, html {
   padding: 9px;
   border: solid rgb(228, 228, 124);
 }
+#mySearchButton {
+  margin:0px;
+  padding: 9px;
+  border: solid rgb(228, 228, 124);
+}
 
 .nav-item {
   margin: 10px
@@ -187,4 +192,17 @@ h5 {
   font-weight: 800;
   font-size: 5.5vw;
   text-transform: uppercase;
+}
+
+.form-row {
+  padding: 50px;
+  margin: 20px;
+  place-content: center;
+  place-items: center;
+  text-align: center;
+}
+
+#finishPurchase {
+  padding:10px;
+  float: right;
 }
