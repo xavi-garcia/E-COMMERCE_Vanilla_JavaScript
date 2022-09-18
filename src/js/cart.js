@@ -110,11 +110,18 @@ confirmPurchaseButton.addEventListener('click', (e) =>{
     confirmPurchase()
 });
 
-function confirmPurchase(){ 
+async function confirmPurchase(){ 
+    if(shoppingCart.length === 0){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'There is nothing to buy',
+          })
+    } else {
     const modalBody = document.getElementById('modal-form');
     modalBody.innerHTML = ""
     const form = document.createElement('formCard');
-    form.innerHTML += `<form>
+    form.innerHTML += `<form id="form-1">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputName14" id="modalText">Name</label>
@@ -142,13 +149,25 @@ function confirmPurchase(){
                                     </div>
                                 </div>
                                 <div id="finishPurchase">
-                                    <button class="btn btn-primary" onclick="finishPurchase()">Finish Purchase</button>
+                                    <button class="btn btn-primary" id="finishP">Finish Purchase</button>
                                 </div>
                             </form>`
     modalBody.appendChild(form);
+    const buttonFinishPurchase = document.getElementById('finishP');
+    const form1 = document.getElementById('form1')
+    buttonFinishPurchase.addEventListener('click', (e)=>{
+        e.preventDefault();
+        finishPurchase()
+        cartContainer.innerHTML = "";
+        counter.innerText = "";
+        totalPrice.innerText = "";
+        shoppingCart.length = 0
+        form.innerHTML = "";
+    })
+    }
 };
 
-function finishPurchase(){
+async function finishPurchase(){
     const inputName = document.getElementById('inputName14');
     const inputLastName = document.getElementById('inputLastName14');
     const inputEmail = document.getElementById('inputEmail4');
@@ -165,11 +184,15 @@ function finishPurchase(){
             text: 'You must complete all input fields',
           })
     } else {
+        updateCart()
         const orderId = Math.floor(Math.random() * 7000)
-        Swal.fire(
-            `Thanks for the purchase ${userName}!`,
-            `Your order id is ${orderId}`,
-            'success'
-          )
+            Swal.fire({
+            icon: 'success',
+            title:`Thanks for the purchase ${userName}!`,
+            text:`Your order id is ${orderId}`,
+          })
+          
+          
     }
 }
+

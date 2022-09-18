@@ -1,4 +1,4 @@
-*{
+* {
   text-decoration: none;
   color: black;
 }
@@ -67,18 +67,16 @@ body, html {
 
 .card {
     margin:10px;
-    padding:0,5px
+    padding: 5px;
+    align-items:center;
+    text-align: center;
+    font-family:  'Grandstander';
 }
 
-/* #product-container {
-    float: right;
-    margin: auto;
-    padding: 10x;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}  */
-
+.card-title , .card-text{
+  font-family:  'Grandstander';
+  text-align: center;
+}
 
 .grid-container {
   display: inline-grid;
@@ -100,7 +98,6 @@ body, html {
   justify-content: space-evenly;
 }
 
-
 #myMenu {
   padding: 20px;
   list-style-type: none;
@@ -111,11 +108,6 @@ body, html {
 #mySearch {
   width: 100%;
   font-size: 15px;
-  padding: 9px;
-  border: solid rgb(228, 228, 124);
-}
-#mySearchButton {
-  margin:0px;
   padding: 9px;
   border: solid rgb(228, 228, 124);
 }
@@ -130,7 +122,7 @@ body, html {
   text-decoration: none;
   color: black;
   display: block;
- font-family: "monaco", monospace;
+  font-family: "monaco", monospace;
 }
 
 h5 {
@@ -178,8 +170,6 @@ h5 {
   100%  {color: var(--color-1)}
 }
 
-
-
 .container {
   display: grid;
   place-items: center;  
@@ -188,9 +178,9 @@ h5 {
 }
 
 .title {
-  font-family: "monaco", monospace;
-  font-weight: 800;
-  font-size: 5.5vw;
+  font-family: 'Rock Salt', cursive;
+  font-weight: 600;
+  font-size: 4.5vw;
   text-transform: uppercase;
 }
 
@@ -205,4 +195,19 @@ h5 {
 #finishPurchase {
   padding:10px;
   float: right;
+}
+
+#footer {
+  padding: 50px;
+}
+
+#footer-text {
+  color:white;
+  font-size: large;
+}
+
+#gifs {
+  padding-left: 0px;
+  align-items: initial;
+  align-content: initial;
 }
