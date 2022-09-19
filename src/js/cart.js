@@ -154,45 +154,39 @@ async function confirmPurchase(){
                             </form>`
     modalBody.appendChild(form);
     const buttonFinishPurchase = document.getElementById('finishP');
-    const form1 = document.getElementById('form1')
     buttonFinishPurchase.addEventListener('click', (e)=>{
         e.preventDefault();
         finishPurchase()
-        cartContainer.innerHTML = "";
-        counter.innerText = "";
-        totalPrice.innerText = "";
-        shoppingCart.length = 0
-        form.innerHTML = "";
-    })
+    });
+   
+    async function finishPurchase(){
+        const inputName = document.getElementById('inputName14');
+        const inputLastName = document.getElementById('inputLastName14');
+        const inputEmail = document.getElementById('inputEmail4');
+        const inputAddress = document.getElementById('inputAddress')
+        const inputState = document.getElementById('inputState');
+        const inputZip = document.getElementById('inputZip');
+        const userName = document.getElementById('inputName14').value;
+    
+        if(inputName.value === "" || inputLastName.value === ""|| inputEmail.value === ""||
+         inputAddress.value === "" || inputState.value === ""|| inputZip.value === "" ){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You must complete all input fields',
+              })
+        } else {
+            const orderId = Math.floor(Math.random() * 7000)
+                Swal.fire({
+                icon: 'success',
+                title:`Thanks for the purchase ${userName}!`,
+                text:`Your order id is ${orderId}`,
+              });
+              return shoppingCart.length = 0, cartContainer.innerHTML = "", counter.innerText = "",
+              totalPrice.innerText = "",  form.innerHTML = "";    
+        }
     }
+    }  
 };
 
-async function finishPurchase(){
-    const inputName = document.getElementById('inputName14');
-    const inputLastName = document.getElementById('inputLastName14');
-    const inputEmail = document.getElementById('inputEmail4');
-    const inputAddress = document.getElementById('inputAddress')
-    const inputState = document.getElementById('inputState');
-    const inputZip = document.getElementById('inputZip');
-    const userName = document.getElementById('inputName14').value;
-
-    if(inputName.value === "" || inputLastName.value === ""|| inputEmail.value === ""||
-     inputAddress.value === "" || inputState.value === ""|| inputZip.value === "" ){
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'You must complete all input fields',
-          })
-    } else {
-        updateCart()
-        const orderId = Math.floor(Math.random() * 7000)
-            Swal.fire({
-            icon: 'success',
-            title:`Thanks for the purchase ${userName}!`,
-            text:`Your order id is ${orderId}`,
-          })
-          
-          
-    }
-}
 
