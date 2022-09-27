@@ -217,3 +217,45 @@ h5 {
     margin-left: auto;
     margin-right: auto
 }
+
+@media only screen and (max-width: 600px) {
+  .banner-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://64.media.tumblr.com/24aa64139a433bf8970ecdea423d042f/c6379cd1da3f30c1-6e/s1280x1920/8aa8dbc8906a471ce114a4d9eebb86cfa05e10dd.jpg");
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  .banner-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+  }
+
+  .grid-container {
+    display: grid;
+  };
+
+  #filter-container{
+    grid-row: 1;
+  }
+
+  #product-container{
+    grid-row: 2;
+    padding: 0%;
+
+  }
+  .item2 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    float: right;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}
