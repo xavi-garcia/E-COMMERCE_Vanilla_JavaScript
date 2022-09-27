@@ -211,3 +211,9 @@ h5 {
   align-items: initial;
   align-content: initial;
 }
+
+#spinner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}

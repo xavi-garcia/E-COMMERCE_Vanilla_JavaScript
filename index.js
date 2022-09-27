@@ -33,97 +33,131 @@ const showProducts = async (products) =>{
     })
 }
 
-const getProducts = async () =>{
+const getFetch = async () => {
     let response = await fetch('src/data/products.json');
     let items = await response.json();
+    return items
+}
+
+const getProducts = async () =>{
+    let items = await getFetch();
     showProducts(items);
     return items
 }
 
-getProducts()
+setTimeout(() => {
+    getProducts()
+}, 3000);
+
 
 async function filterByAlphabeticalOrder(){
-    let response = await fetch('src/data/products.json');
-    let items = await response.json()
+    let items = await getFetch();
     items.sort(function (x, y) {
         let a = x.name.toUpperCase(),
             b = y.name.toUpperCase();
         return a == b ? 0 : a > b ? 1 : -1;
     });
-    productsContainer.innerHTML = ""
-    showProducts(items)
+    productsContainer.innerHTML = `<img id="spinner" src="https://images.gamebanana.com/img/ico/sprays/sasuke_2.gif" alt="">`
+    setTimeout(() => {
+        productsContainer.innerHTML = ""
+        showProducts(items)
+    }, 3000);
     
 };
 
 async function filterByShonen(){
-    let response = await fetch('src/data/products.json');
-    let items = await response.json();
+    let items = await getFetch();
     let category = items.filter(item => item.category === "Shonen");
-    productsContainer.innerHTML = ""
-    showProducts(category)
+    productsContainer.innerHTML = `<img id="spinner" src="https://images.gamebanana.com/img/ico/sprays/sasuke_2.gif" alt="">`
+    setTimeout(() => {
+        productsContainer.innerHTML = ""
+        showProducts(category)
+    }, 3000);
 };
 
 
 async function filterByShojo(){
-    let response = await fetch('src/data/products.json');
-    let items = await response.json();
+    let items = await getFetch();
     let category = items.filter(item => item.category === "Shojo");
-    productsContainer.innerHTML = ""
-    showProducts(category)
+    productsContainer.innerHTML =`<img id="spinner" src="https://images.gamebanana.com/img/ico/sprays/sasuke_2.gif" alt="">`
+    setTimeout(() => {
+        productsContainer.innerHTML = ""
+        showProducts(category)
+    }, 3000);
 };
 
 async function filterByNovel(){
-    let response = await fetch('src/data/products.json');
-    let items = await response.json();
+    let items = await getFetch();
     let category = items.filter(item => item.category === "Novel");
-    productsContainer.innerHTML = ""
-    showProducts(category)
+    productsContainer.innerHTML = `<img id="spinner" src="https://images.gamebanana.com/img/ico/sprays/sasuke_2.gif" alt="">`
+    setTimeout(() => {
+        productsContainer.innerHTML = ""
+        showProducts(category)
+    }, 3000);
 };
 
 async function filterByHighToLow(){
-    let response = await fetch('src/data/products.json');
-    let items = await response.json()
+    let items = await getFetch();
     items.sort(function (a, b) {return b.price -  a.price } )
-    productsContainer.innerHTML = ""
-    showProducts(items)
+    productsContainer.innerHTML = `<img id="spinner" src="https://images.gamebanana.com/img/ico/sprays/sasuke_2.gif" alt="">`
+    setTimeout(() => {
+        productsContainer.innerHTML = ""
+        showProducts(items)
+    }, 3000);
 };
 
 async function filterByLowToHigh(){
-    let response = await fetch('src/data/products.json');
-    let items = await response.json()
+    let items = await getFetch();
     items.sort(function (a, b) {return a.price -  b.price } )
-    productsContainer.innerHTML = ""
-    showProducts(items)
+    productsContainer.innerHTML = `<img id="spinner" src="https://images.gamebanana.com/img/ico/sprays/sasuke_2.gif" alt="">`
+    setTimeout(() => {
+        productsContainer.innerHTML = ""
+        showProducts(items)
+    }, 3000);
 };
 
 async function filterProducts(){
-    let response = await fetch('src/data/products.json');
-    let items = await response.json()
+    let items = await getFetch();
     switch(searchInput.value){
         case "Masashi Kishimoto":
             const authorNaruto = items.filter(item => item.author == "Masashi Kishimoto");
-            productsContainer.innerHTML = ""
-            showProducts(authorNaruto)
+            productsContainer.innerHTML = `<img id="spinner" src="https://images.gamebanana.com/img/ico/sprays/sasuke_2.gif" alt="">`
+            setTimeout(() => {
+                productsContainer.innerHTML = ""
+                showProducts(authorNaruto)
+            }, 3000);
             break;
         case "Tatsuki Fujimoto":
             let authorChainsaw = items.filter(item => item.author == "Tatsuki Fujimoto");
-            productsContainer.innerHTML = ""
-            showProducts(authorChainsaw)
+            productsContainer.innerHTML = `<img id="spinner" src="https://images.gamebanana.com/img/ico/sprays/sasuke_2.gif" alt="">`
+            setTimeout(() => {
+                productsContainer.innerHTML = ""
+                showProducts(authorChainsaw)
+            }, 3000);
             break;
         case "CLAMP":
             let authorClamp = items.filter(item => item.author == "CLAMP");
-            productsContainer.innerHTML = ""
-            showProducts(authorClamp)
+            productsContainer.innerHTML = `<img id="spinner" src="https://images.gamebanana.com/img/ico/sprays/sasuke_2.gif" alt="">`
+            setTimeout(() => {
+                productsContainer.innerHTML = ""
+                showProducts(authorClamp)
+            }, 3000);
             break;
         case "Junji Ito":
             let authorJunjiIto = items.filter(item => item.author == "Junji Ito");
-            productsContainer.innerHTML = ""
-            showProducts(authorJunjiIto)
+            productsContainer.innerHTML = `<img id="spinner" src="https://images.gamebanana.com/img/ico/sprays/sasuke_2.gif" alt="">`
+            setTimeout(() => {
+                productsContainer.innerHTML = ""
+                showProducts(authorJunjiIto)
+            }, 3000);
             break;
         case "Ai Yazawa":
             let authorNana = items.filter(item => item.author == "Ai Yazawa");
-            productsContainer.innerHTML = ""
-            showProducts(authorNana)
+            productsContainer.innerHTML = `<img id="spinner" src="https://thumbs.gfycat.com/PointedAnxiousAngwantibo-max-1mb.gif" alt="">`
+            setTimeout(() => {
+                productsContainer.innerHTML = ""
+                showProducts(authorNana)
+            }, 3000);
             break;
         default:
             Swal.fire({
