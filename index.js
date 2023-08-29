@@ -1,6 +1,14 @@
 const productsContainer = document.getElementById('product-container');
 const searchInput = document.getElementById('mySearch');
 
+searchInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        filterByAuthor();
+    }
+});
+
+
 const showProducts = async (products) =>{
     products.forEach( product =>{
         const card = document.createElement('card');
@@ -31,24 +39,23 @@ const showProducts = async (products) =>{
               }).showToast();
         })
     })
-}
+};
 
 const getFetch = async () => {
     let response = await fetch('src/data/products.json');
     let items = await response.json();
     return items
-}
+};
 
 const getProducts = async () =>{
     let items = await getFetch();
     showProducts(items);
     return items
-}
+};
 
 setTimeout(() => {
     getProducts()
 }, 3000);
-
 
 async function filterByAlphabeticalOrder(){
     let items = await getFetch();
@@ -74,7 +81,6 @@ async function filterByShonen(){
         showProducts(category)
     }, 3000);
 };
-
 
 async function filterByShojo(){
     let items = await getFetch();
@@ -116,8 +122,11 @@ async function filterByLowToHigh(){
     }, 3000);
 };
 
-async function filterProducts(){
-    let items = await getFetch();
+
+
+async function filterByAuthor(){
+    let items =  await getFetch();
+    
     switch(searchInput.value){
         case "Masashi Kishimoto":
             const authorNaruto = items.filter(item => item.author == "Masashi Kishimoto");
